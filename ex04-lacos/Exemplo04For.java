@@ -19,11 +19,10 @@ public class Exemplo04For {
       "Existem " + qtdInterv + " números no intervalo de " +
       num1 + " a " + num2
     );
-    System.out.print("E esses números são: ");
-
-    for (int i = num1; i <= num2; ++i) {
-      System.out.print(i + " ");
+    System.out.print("E esses números são: { " + num1);
+    for (int i = num1 + 1; i <= num2; ++i) {
+      System.out.print(", " + i);
     }
-    System.out.println();
+    System.out.println(" }");
   }
 }
