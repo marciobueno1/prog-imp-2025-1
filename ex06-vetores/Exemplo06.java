@@ -4,38 +4,51 @@ public class Exemplo06 {
     public static Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
         double[] notas = new double[5];
-        double somatorio, media;
-        double nota;
-        int pos;
-
-        // Digitação de todas as notas
-        for (int i = 0; i < notas.length; i += 1) {
-            System.out.print("Digite a " + (i + 1) + "ª nota: ");
-            notas[i] = input.nextDouble();
-        }
-
-        // Impressão das notas digitadas
-        System.out.println("\nNotas Digitadas:");
-        for (int i = 0; i < notas.length; i += 1) {
-            System.out.println((i + 1) + "ª nota: " + notas[i]);
-        }
-
-        // Cálculo da média
-        somatorio = 0.0;
-        for (int i = 0; i < notas.length; i += 1) {
-            somatorio += notas[i];
-        }
-        media = somatorio / notas.length;
+        double media;
+        digitacaoNotas(notas);
+        impressaoNotas(notas);
+        media = calcularMedia(notas);
         System.out.println("\nA média da turma é " + media);
+        System.out.println("\nNotas maior ou igual a média da turma\n");
+        impressaoNotasMaiorIgualValor(notas, media);
+        System.out.println("\nNotas maior ou igual a 7.0\n");
+        impressaoNotasMaiorIgualValor(notas, 7.0);
+        buscarNotasEnquantoNotaNaoNegativa(notas);
+    }
 
-        // Impressão das notas acima da média da turma
-        for (int i = 0; i < notas.length; i += 1) {
-            if (notas[i] > media) {
-                System.out.println((i + 1) + "ª nota: " + notas[i]);
+    public static void digitacaoNotas(double[] v) {
+        for (int i = 0; i < v.length; i += 1) {
+            System.out.print("Digite a " + (i + 1) + "ª nota: ");
+            v[i] = input.nextDouble();
+        }
+    }
+
+    public static void impressaoNotas(double[] v) {
+        System.out.println("\nNotas Digitadas:");
+        for (int i = 0; i < v.length; i += 1) {
+            System.out.println((i + 1) + "ª nota: " + v[i]);
+        }
+    }
+
+    public static double calcularMedia(double[] v) {
+        double somatorio = 0.0;
+        for (int i = 0; i < v.length; i += 1) {
+            somatorio += v[i];
+        }
+        return somatorio / v.length;
+    }
+
+    public static void impressaoNotasMaiorIgualValor(double[] v, double valor) {
+        for (int i = 0; i < v.length; i += 1) {
+            if (v[i] >= valor) {
+                System.out.println((i + 1) + "ª nota: " + v[i]);
             }
         }
+    }
 
-        // encontrar um valor dentro do array
+    public static void buscarNotasEnquantoNotaNaoNegativa(double notas[]) {
+        double nota;
+        int pos;
         System.out.print("\nDigite uma nota a ser pesquisada: ");
         nota = input.nextDouble();
         while (nota >= 0.0) {
