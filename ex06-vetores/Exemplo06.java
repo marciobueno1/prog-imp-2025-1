@@ -17,7 +17,12 @@ public class Exemplo06 {
     }
 
     public static void inserirOrdenado(double[] v, int pos, double x) {
-
+        int i = pos;
+        while (i > 0 && v[i - 1] > x) {
+            v[i] = v[i - 1];
+            i -= 1;
+        }
+        v[i] = x;
     }
 
     public static void digitacaoNotas(double[] v) {
