@@ -94,4 +94,19 @@ public class Exemplo06 {
         }
         return -1;
     }
+
+    public static int buscaBinaria(double[] v, double x) {
+        int inicio = 0, fim = v.length, meio;
+        while (inicio <= fim) {
+            meio = (inicio + fim) / 2;
+            if (x == v[meio]) {
+                return meio;
+            } else if (x < v[meio]) {
+                fim = meio - 1;
+            } else {
+                inicio = meio + 1;
+            }
+        }
+        return -1;
+    }
 }
