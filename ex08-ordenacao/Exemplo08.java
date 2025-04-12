@@ -5,19 +5,26 @@ public class Exemplo08 {
   public static Random geradorAleat = new Random(5);
 
   public static void main(String[] args) {
-    double[] numeros = new Double[TAM];
+    double[] numeros = new double[TAM];
     preencherAleatorio2(numeros);
     System.out.println("VETOR CRIADO (01)");
     imprimir(numeros);
     insercaoDireta(numeros, numeros.length);
-    System.out.println("VETOR APÓS INSERÇÃO DIRETA");
+    System.out.println("\nVETOR APÓS INSERÇÃO DIRETA");
     imprimir(numeros);
     preencherAleatorio2(numeros);
-    System.out.println("VETOR CRIADO (02)");
+    System.out.println("\n\nVETOR CRIADO (02)");
     imprimir(numeros);
     selecaoDireta(numeros, numeros.length);
-    System.out.println("VETOR APÓS SELEÇÃO DIRETA");
+    System.out.println("\nVETOR APÓS SELEÇÃO DIRETA");
     imprimir(numeros);
+    preencherAleatorio2(numeros);
+    System.out.println("\n\nVETOR CRIADO (03)");
+    imprimir(numeros);
+    metodoBolha(numeros, numeros.length);
+    System.out.println("\nVETOR APÓS MÉTODO DA BOLHA");
+    imprimir(numeros);
+    System.out.println("\n\n");
   }
 
   public static void insercaoDireta(double[] v, int n) {
@@ -50,10 +57,26 @@ public class Exemplo08 {
     }
   }
 
+  public static void metodoBolha(double[] v, int n) {
+    int fim = n - 2, pos = 0;
+    boolean trocou = true;
+    double chave;
+    while (trocou) {
+      trocou = false;
+      for (int i = 0; i <= fim; i++) {
+        if (v[i] > v[i+1]) {
+          chave = v[i]; v[i] = v[i+1]; v[i+1] = chave;
+          pos = i; trocou = true;
+        }
+      }
+      fim = pos-1;
+    }
+  }
+
   public static void imprimir(double[] v) {
     for (int i = 0; i < v.length; i += 1) {
-      System.out.printf("%.2f ", v[i]);
-      if ((i + 1) % 20 == 0) {
+      System.out.printf("%6.2f ", v[i]);
+      if ((i + 1) % 12 == 0) {
         System.out.println();
       }
     }
@@ -66,7 +89,7 @@ public class Exemplo08 {
       v[i] = i + 1;
     }
     for (int i = 0; i < v.length; i += 1) {
-      pos = geradorAleat.nextDouble(TAM);
+      pos = geradorAleat.nextInt(TAM);
       aux = v[i];
       v[i] = v[pos];
       v[pos] = aux;
