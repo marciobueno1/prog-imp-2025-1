@@ -86,7 +86,7 @@ public class Exemplo08 {
     int pos;
     double aux;
     for (int i = 0; i < v.length; i += 1) {
-      v[i] = i + 1;
+      v[i] = (i + 1) / 10.0;
     }
     for (int i = 0; i < v.length; i += 1) {
       pos = geradorAleat.nextInt(TAM);

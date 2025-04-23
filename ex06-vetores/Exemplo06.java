@@ -96,7 +96,7 @@ public class Exemplo06 {
     }
 
     public static int buscaBinaria(double[] v, double x) {
-        int inicio = 0, fim = v.length, meio;
+        int inicio = 0, fim = v.length - 1, meio;
         while (inicio <= fim) {
             meio = (inicio + fim) / 2;
             if (x == v[meio]) {
