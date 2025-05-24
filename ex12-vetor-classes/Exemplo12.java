@@ -18,9 +18,12 @@ public class Exemplo12 {
       imprimirPessoa(pessoas[i]);
     }
 
-    int indiceMaisAlta = buscarPessoaMaisAlta(pessoas, TAM);
+    int indiceMaisAlta = buscarPessoaMaisAlta(pessoas, pessoas.length);
     System.out.print("A pessoa mais alta é ");
     imprimirPessoa(pessoas[indiceMaisAlta]);
+
+    double mediaIdade = calcularMediaIdade(pessoas, pessoas.length);
+    System.out.println("A média de idade destas pessoas é " + mediaIdade);
   }
 
   public static void lerPessoa(Pessoa p) {
@@ -53,5 +56,16 @@ public class Exemplo12 {
       }
     }
     return indiceMaisAlta;
+  }
+
+  public static double calcularMediaIdade(Pessoa[] v, int tam) {
+    double soma = 0.0;
+    if (tam <= 0) {
+      return 0.0;
+    }
+    for (int i = 0; i < tam; i += 1) {
+      soma += v[i].idade;
+    }
+    return soma / tam;
   }
 }
